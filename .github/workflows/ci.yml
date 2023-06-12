@@ -1,0 +1,21 @@
+name: CI
+
+on: push
+
+jobs:
+  app-lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install
+        run: make install
+
+      - name: Linting
+        run: make lint
+
+      - name: Static analyze
+        run: make static-analyze
